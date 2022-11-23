@@ -4,7 +4,7 @@ interface InputProps {
 	type: string;
 	label: string;
 	id?: string;
-	variant?: string;
+	variant?: 'outlined' | 'standard' | 'filled' | undefined;
 }
 
 export const InputText = ({
@@ -13,5 +13,5 @@ export const InputText = ({
 	id = 'outlined-basic',
 	variant = 'outlined',
 }: InputProps) => {
-	return <TextField type={type} label={label} />;
+	return <TextField type={type} label={label} id={id} variant={variant} />;
 };
