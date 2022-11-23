@@ -1,4 +1,9 @@
-export const FormStyles: any = {
+interface FormStylesTypes {
+	FormContainer: { [key: string]: string };
+	Headers: { [key: string]: string };
+}
+
+export const FormStyles: FormStylesTypes = {
 	FormContainer: {
 		display: 'flex',
 		flexDirection: 'column',
