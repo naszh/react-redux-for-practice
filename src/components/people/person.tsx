@@ -1,3 +1,4 @@
+import { JsxElement } from 'typescript';
 import { PersonInfo, PersonItem } from './people.styles';
 
 interface PersonType {
@@ -13,14 +14,20 @@ interface PersonElementProps {
 	personInfo: PersonType;
 }
 
+export interface PersonInfoProps {
+	color?: string;
+}
+
 export const PersonElement = (props: PersonElementProps) => {
 	return (
 		<PersonItem>
 			<PersonInfo>id: {props.personInfo.id}</PersonInfo>
 			<PersonInfo>name: {props.personInfo.name}</PersonInfo>
 			<PersonInfo>age: {props.personInfo.age}</PersonInfo>
-			<PersonInfo>hometown: {props.personInfo.hometown}</PersonInfo>
-			<PersonInfo>
+			<PersonInfo color='blue'>
+				hometown: {props.personInfo.hometown}
+			</PersonInfo>
+			<PersonInfo color='lightgreen'>
 				interests: {props.personInfo.interests.join(', ')}
 			</PersonInfo>
 			<PersonInfo>hasPet: {props.personInfo.hasPet.toString()}</PersonInfo>
