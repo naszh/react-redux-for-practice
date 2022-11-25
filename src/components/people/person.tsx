@@ -1,4 +1,3 @@
-import { JsxElement } from 'typescript';
 import { PersonInfo, PersonItem } from './people.styles';
 
 interface PersonType {
@@ -20,7 +19,12 @@ export interface PersonInfoProps {
 
 export const PersonElement = (props: PersonElementProps) => {
 	return (
-		<PersonItem>
+		<PersonItem
+			style={{
+				borderRadius:
+					props.personInfo.id === 0 || props.personInfo.id === 5 ? '0' : '30px',
+			}}
+		>
 			<PersonInfo>id: {props.personInfo.id}</PersonInfo>
 			<PersonInfo>name: {props.personInfo.name}</PersonInfo>
 			<PersonInfo>age: {props.personInfo.age}</PersonInfo>

@@ -13,7 +13,6 @@ export const PersonItem = styled.li`
 	list-style-type: none;
 	background-color: rgba(210, 25, 25, 0.05);
 	border: 1px solid rgba(210, 25, 25, 0.1);
-	border-radius: 20px;
 	padding: 20px;
 `;
 
