@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { PersonInfoProps } from './person';
 
 export const PeopleList = styled.ul`
 	margin: 0;
@@ -16,7 +15,6 @@ export const PersonItem = styled.li`
 	padding: 20px;
 `;
 
-export const PersonInfo = styled.p<PersonInfoProps>`
+export const PersonInfo = styled.p`
 	margin: 8px 0 0;
-	color: ${props => props.color};
 `;
