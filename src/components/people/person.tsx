@@ -11,7 +11,7 @@ export interface PersonType {
 
 export interface PersonElementProps {
 	personInfo: PersonType;
-	borderRadius: string;
+	borderRadius?: string;
 }
 
 export interface PersonInfoProps {
