@@ -56,7 +56,7 @@ export const People = () => {
 	return (
 		<PeopleList>
 			{peopleArr.map(person => (
-				<PersonElement personInfo={person} key={person.id} />
+				<PersonElement personInfo={person} key={person.id} borderRadius={''} />
 			))}
 		</PeopleList>
 	);

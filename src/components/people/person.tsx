@@ -1,6 +1,6 @@
 import { PersonInfo, PersonItem } from './people.styles';
 
-interface PersonType {
+export interface PersonType {
 	id: number;
 	name: string;
 	age: number;
@@ -9,42 +9,32 @@ interface PersonType {
 	hasPet: boolean;
 }
 
-interface PersonElementProps {
+export interface PersonElementProps {
 	personInfo: PersonType;
+	borderRadius: string;
 }
 
-export const PersonElement = (props: PersonElementProps) => {
+export interface PersonInfoProps {
+	personInfo?: PersonType;
+	color?: string;
+}
+
+export const PersonElement = ({
+	personInfo,
+	borderRadius,
+}: PersonElementProps) => {
 	return (
-		<PersonItem
-			style={{
-				borderRadius:
-					props.personInfo.id === 0 || props.personInfo.id === 5 ? '0' : '30px',
-			}}
-		>
-			<PersonInfo>id: {props.personInfo.id}</PersonInfo>
-			<PersonInfo>name: {props.personInfo.name}</PersonInfo>
-			<PersonInfo>age: {props.personInfo.age}</PersonInfo>
-			<PersonInfo
-				style={{
-					color:
-						props.personInfo.id === 0 || props.personInfo.id === 5
-							? 'blue'
-							: 'initial',
-				}}
-			>
-				hometown: {props.personInfo.hometown}
+		<PersonItem borderRadius={borderRadius} personInfo={personInfo}>
+			<PersonInfo>id: {personInfo.id}</PersonInfo>
+			<PersonInfo>name: {personInfo.name}</PersonInfo>
+			<PersonInfo>age: {personInfo.age}</PersonInfo>
+			<PersonInfo personInfo={personInfo} color='blue'>
+				hometown: {personInfo.hometown}
 			</PersonInfo>
-			<PersonInfo
-				style={{
-					color:
-						props.personInfo.id === 0 || props.personInfo.id === 5
-							? 'lightgreen'
-							: 'initial',
-				}}
-			>
-				interests: {props.personInfo.interests.join(', ')}
+			<PersonInfo personInfo={personInfo} color='lightgreen'>
+				interests: {personInfo.interests.join(', ')}
 			</PersonInfo>
-			<PersonInfo>hasPet: {props.personInfo.hasPet.toString()}</PersonInfo>
+			<PersonInfo>hasPet: {personInfo.hasPet.toString()}</PersonInfo>
 		</PersonItem>
 	);
 };
