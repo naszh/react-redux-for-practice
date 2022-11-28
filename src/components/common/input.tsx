@@ -13,7 +13,6 @@ interface InputProps {
 export const InputText = ({
 	type,
 	label,
-	id = 'outlined-basic',
 	variant = 'outlined',
 	required = true,
 }: InputProps) => {
@@ -21,7 +20,6 @@ export const InputText = ({
 		<TextField
 			type={type}
 			label={label}
-			id={id}
 			variant={variant}
 			required={required}
 		/>

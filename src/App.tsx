@@ -1,9 +1,15 @@
 import React from 'react';
-import './App.css';
+import { Wrapper } from './App.styles';
+import { People } from './components/people/people';
 import { SignUpForm } from './components/signup/signup';
 
 function App() {
-	return <SignUpForm />;
+	return (
+		<Wrapper>
+			<SignUpForm />
+			<People />
+		</Wrapper>
+	);
 }
 
 export default App;

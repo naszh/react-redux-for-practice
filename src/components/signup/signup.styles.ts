@@ -7,8 +7,7 @@ export const FormStyles: FormStylesTypes = {
 	FormContainer: {
 		display: 'flex',
 		flexDirection: 'column',
-		margin: '40px auto 0',
-		width: '33%',
+		margin: '0 auto',
 		alignItems: 'stretch',
 		gap: '15px',
 		backgroundColor: 'rgba(25, 118, 210, 0.05)',
