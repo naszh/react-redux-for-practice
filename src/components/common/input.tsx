@@ -8,6 +8,9 @@ interface InputProps {
 	id?: string;
 	variant?: 'outlined' | 'standard' | 'filled' | undefined;
 	required?: boolean;
+	value?: string;
+	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	error?: boolean;
 }
 
 export const InputText = ({
@@ -15,6 +18,9 @@ export const InputText = ({
 	label,
 	variant = 'outlined',
 	required = true,
+	value,
+	onChange,
+	error,
 }: InputProps) => {
 	return (
 		<TextField
@@ -22,23 +28,32 @@ export const InputText = ({
 			label={label}
 			variant={variant}
 			required={required}
+			value={value}
+			onChange={onChange}
+			error={error}
 		/>
 	);
 };
 
-export const InputTel = () => {
-	const [phone, setPhone] = React.useState('');
+interface InputTelProps {
+	value: string;
+	onChange: (value: string) => void;
+	label?: string;
+	required?: boolean;
+}
 
-	const handleChange = (newPhone: React.SetStateAction<string>) => {
-		setPhone(newPhone);
-	};
-
+export const InputTel = ({
+	value,
+	onChange,
+	label = 'Enter your phone number',
+	required = true,
+}: InputTelProps) => {
 	return (
 		<MuiTelInput
-			value={phone}
-			onChange={handleChange}
-			label='Enter your phone number'
-			required
+			value={value}
+			onChange={onChange}
+			label={label}
+			required={required}
 		/>
 	);
 };

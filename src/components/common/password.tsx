@@ -6,29 +6,23 @@ import {
 	InputAdornment,
 	IconButton,
 } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 
-interface State {
-	password: string;
-	showPassword: boolean;
+interface InputAdornmentsProps {
+	value: string;
+	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	error: boolean;
 }
 
-export default function InputAdornments() {
-	const [values, setValues] = React.useState<State>({
-		password: '',
-		showPassword: false,
-	});
-
-	const handleChange =
-		(prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
-			setValues({ ...values, [prop]: event.target.value });
-		};
+export default function InputAdornments({
+	value,
+	onChange,
+	error,
+}: InputAdornmentsProps) {
+	const [showPassword, setShowPassword] = useState<boolean>(false);
 
 	const handleClickShowPassword = () => {
-		setValues({
-			...values,
-			showPassword: !values.showPassword,
-		});
+		setShowPassword(!showPassword);
 	};
 
 	const handleMouseDownPassword = (
@@ -44,9 +38,10 @@ export default function InputAdornments() {
 			</InputLabel>
 			<OutlinedInput
 				id='outlined-adornment-password'
-				type={values.showPassword ? 'text' : 'password'}
-				value={values.password}
-				onChange={handleChange('password')}
+				type={showPassword ? 'text' : 'password'}
+				error={error}
+				value={value}
+				onChange={onChange}
 				endAdornment={
 					<InputAdornment position='end'>
 						<IconButton
@@ -55,7 +50,7 @@ export default function InputAdornments() {
 							onMouseDown={handleMouseDownPassword}
 							edge='end'
 						>
-							{values.showPassword ? <VisibilityOff /> : <Visibility />}
+							{showPassword ? <VisibilityOff /> : <Visibility />}
 						</IconButton>
 					</InputAdornment>
 				}
