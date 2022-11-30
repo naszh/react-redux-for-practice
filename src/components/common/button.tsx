@@ -1,9 +1,12 @@
 import { Button } from '@mui/material';
 
-export const ButtonElement = () => {
+interface ButtonElementProps {
+	onClick: () => void;
+}
+
+export const ButtonElement = ({ onClick }: ButtonElementProps) => {
 	return (
 		<Button
-			type='submit'
 			variant='outlined'
 			size='large'
 			sx={{
@@ -11,6 +14,7 @@ export const ButtonElement = () => {
 				color: 'rgba(25, 118, 210, 0.8)',
 				border: '1px solid rgba(25, 118, 210, 0.6)',
 			}}
+			onClick={onClick}
 		>
 			SIGN UP
 		</Button>
