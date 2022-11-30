@@ -11,11 +11,13 @@ import React, { useState } from 'react';
 interface InputAdornmentsProps {
 	value: string;
 	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	error: boolean;
 }
 
 export default function InputAdornments({
 	value,
 	onChange,
+	error,
 }: InputAdornmentsProps) {
 	const [showPassword, setShowPassword] = useState<boolean>(false);
 
@@ -37,6 +39,7 @@ export default function InputAdornments({
 			<OutlinedInput
 				id='outlined-adornment-password'
 				type={showPassword ? 'text' : 'password'}
+				error={error}
 				value={value}
 				onChange={onChange}
 				endAdornment={

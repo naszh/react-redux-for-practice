@@ -14,6 +14,10 @@ export const SignUpForm = () => {
 
 	const [isValid, setIsValid] = useState<boolean>(false);
 
+	const [isErrorName, setIsErrorName] = useState<boolean>(false);
+	const [isErrorEmail, setIsErrorEmail] = useState<boolean>(false);
+	const [isErrorPassword, setIsErrorPassword] = useState<boolean>(false);
+
 	const handleChangeName = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setName(event.target.value);
 	};
@@ -54,10 +58,22 @@ export const SignUpForm = () => {
 		const minOneNum = password.match(/\d{1,}/);
 		const minLetters = password.match(/[a-zA-Z]/gi);
 
-		if (minLengthName && emailValid && minOneNum && minLetters!.length >= 3) {
-			setIsValid(true);
-		} else {
-			setIsValid(false);
+		minLengthName && emailValid && minOneNum && minLetters!.length >= 3
+			? setIsValid(true)
+			: setIsValid(false);
+
+		if (name) {
+			minLengthName ? setIsErrorName(false) : setIsErrorName(true);
+		}
+
+		if (email) {
+			emailValid ? setIsErrorEmail(false) : setIsErrorEmail(true);
+		}
+
+		if (password) {
+			minOneNum && minLetters!.length >= 3
+				? setIsErrorPassword(false)
+				: setIsErrorPassword(true);
 		}
 	}, [name, email, password]);
 
@@ -68,19 +84,25 @@ export const SignUpForm = () => {
 					<h1 style={FormStyles.Headers}>SIGN UP</h1>
 					<h2 style={FormStyles.Headers}>It's free.</h2>
 					<InputText
+						error={isErrorName}
 						type={'text'}
 						label={'Enter your name'}
 						value={name}
 						onChange={handleChangeName}
 					/>
 					<InputText
+						error={isErrorEmail}
 						type={'email'}
 						label={'Enter your email'}
 						value={email}
 						onChange={handleChangeEmail}
 					/>
 					<InputTel value={phone} onChange={handleChangePhone} />
-					<InputAdornments value={password} onChange={handleChangePassword} />
+					<InputAdornments
+						error={isErrorPassword}
+						value={password}
+						onChange={handleChangePassword}
+					/>
 					<CheckElement checked={checked} onChange={handleChangeChecked} />
 					<ButtonElement onClick={handleConfirm} disabled={!isValid} />
 				</div>

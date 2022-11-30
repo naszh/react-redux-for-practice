@@ -10,6 +10,7 @@ interface InputProps {
 	required?: boolean;
 	value?: string;
 	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	error?: boolean;
 }
 
 export const InputText = ({
@@ -19,6 +20,7 @@ export const InputText = ({
 	required = true,
 	value,
 	onChange,
+	error,
 }: InputProps) => {
 	return (
 		<TextField
@@ -28,6 +30,7 @@ export const InputText = ({
 			required={required}
 			value={value}
 			onChange={onChange}
+			error={error}
 		/>
 	);
 };
