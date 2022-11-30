@@ -1,4 +1,5 @@
 import { FormGroup, FormControlLabel, Checkbox } from '@mui/material';
+import { CheckboxStyle } from './checkbox.styles';
 
 interface CheckElementProps {
 	checked: boolean;
@@ -11,18 +12,13 @@ export const CheckElement = ({ checked, onChange }: CheckElementProps) => {
 			<FormControlLabel
 				control={
 					<Checkbox
-						sx={{
-							color: 'rgba(25, 118, 210, 0.6)',
-							'&.Mui-checked': {
-								color: 'rgba(25, 118, 210, 0.8)',
-							},
-						}}
+						sx={CheckboxStyle.Checkbox}
 						checked={checked}
 						onChange={onChange}
 					/>
 				}
 				label='I accept all terms & conditions'
-				sx={{ opacity: '.75' }}
+				sx={CheckboxStyle.FormControlLabel}
 			/>
 		</FormGroup>
 	);

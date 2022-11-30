@@ -1,7 +1,7 @@
 import { InputTel, InputText } from '../common/input';
 import InputAdornments from '../common/password';
-import { CheckElement } from '../common/checkbox';
-import { ButtonElement } from '../common/button';
+import { CheckElement } from '../common/checkbox/checkbox';
+import { ButtonElement } from '../common/button/button';
 import { useEffect, useState } from 'react';
 import { FormStyles } from './signup.styles';
 
