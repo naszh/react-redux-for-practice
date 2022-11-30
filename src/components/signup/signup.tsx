@@ -2,7 +2,7 @@ import { InputTel, InputText } from '../common/input';
 import InputAdornments from '../common/password';
 import { CheckElement } from '../common/checkbox';
 import { ButtonElement } from '../common/button';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FormStyles } from './signup.styles';
 
 export const SignUpForm = () => {
@@ -11,6 +11,8 @@ export const SignUpForm = () => {
 	const [phone, setPhone] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
 	const [checked, setChecked] = useState(false);
+
+	const [isValid, setIsValid] = useState<boolean>(false);
 
 	const handleChangeName = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setName(event.target.value);
@@ -46,6 +48,19 @@ export const SignUpForm = () => {
 		);
 	};
 
+	useEffect(() => {
+		const minLengthName = name.length > 3;
+		const emailValid = email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+		const minOneNum = password.match(/\d{1,}/);
+		const minLetters = password.match(/[a-zA-Z]/gi);
+
+		if (minLengthName && emailValid && minOneNum && minLetters!.length >= 3) {
+			setIsValid(true);
+		} else {
+			setIsValid(false);
+		}
+	}, [name, email, password]);
+
 	return (
 		<>
 			<form>
@@ -67,7 +82,7 @@ export const SignUpForm = () => {
 					<InputTel value={phone} onChange={handleChangePhone} />
 					<InputAdornments value={password} onChange={handleChangePassword} />
 					<CheckElement checked={checked} onChange={handleChangeChecked} />
-					<ButtonElement onClick={handleConfirm} />
+					<ButtonElement onClick={handleConfirm} disabled={!isValid} />
 				</div>
 			</form>
 			<div>{state}</div>
