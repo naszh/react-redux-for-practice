@@ -4,7 +4,8 @@ import { ThemeContext } from '../../theme/themeProvider';
 import {
 	CheckboxStyleLight,
 	CheckboxStyleDark,
-	FormControlLabelStyle,
+	FormControlLabelDark,
+	FormControlLabelLight,
 } from './checkbox.styles';
 
 interface CheckElementProps {
@@ -26,7 +27,7 @@ export const CheckElement = ({ checked, onChange }: CheckElementProps) => {
 					/>
 				}
 				label='I accept all terms & conditions'
-				sx={FormControlLabelStyle}
+				sx={theme === 'light' ? FormControlLabelLight : FormControlLabelDark}
 			/>
 		</FormGroup>
 	);

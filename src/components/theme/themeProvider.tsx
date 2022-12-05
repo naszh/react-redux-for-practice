@@ -18,9 +18,11 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
 
 	const color = theme === 'light' ? 'darkslategray' : 'mintcream';
 	const backgroundColor = theme === 'light' ? 'mintcream' : 'darkslategray';
+	const fontFamily = theme === 'light' ? 'cursive' : 'monospace';
 
 	document.body.style.color = color;
 	document.body.style.backgroundColor = backgroundColor;
+	document.body.style.fontFamily = fontFamily;
 
 	return (
 		<ThemeContext.Provider value={{ theme, toggleTheme }}>

@@ -12,6 +12,12 @@ export const CheckboxStyleDark = {
 	},
 };
 
-export const FormControlLabelStyle = {
+export const FormControlLabelLight = {
 	opacity: '.75',
+	span: { fontWeight: '700', fontFamily: 'cursive' },
+};
+
+export const FormControlLabelDark = {
+	opacity: '.75',
+	span: { fontWeight: '100', fontFamily: 'monospace' },
 };

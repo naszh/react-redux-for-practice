@@ -2,8 +2,9 @@ import { InputTel, InputText } from '../common/input/input';
 import InputAdornments from '../common/input/password';
 import { CheckElement } from '../common/checkbox/checkbox';
 import { ButtonElement } from '../common/button/button';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { FormContainer, Header1, Header2 } from './signup.styles';
+import { ThemeContext } from '../theme/themeProvider';
 
 export const SignUpForm = () => {
 	const [name, setName] = useState<string>('');
@@ -76,12 +77,18 @@ export const SignUpForm = () => {
 		}
 	}, [name, email, password]);
 
+	const { theme } = useContext(ThemeContext);
+
 	return (
 		<>
 			<form>
 				<FormContainer>
-					<Header1>SIGN UP</Header1>
-					<Header2>It's free.</Header2>
+					<Header1 style={{ fontWeight: theme === 'light' ? '100' : '700' }}>
+						SIGN UP
+					</Header1>
+					<Header2 style={{ fontWeight: theme === 'light' ? '100' : '700' }}>
+						It's free.
+					</Header2>
 					<InputText
 						error={isErrorName}
 						type={'text'}
