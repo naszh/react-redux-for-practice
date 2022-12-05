@@ -1,5 +1,7 @@
 import { Button } from '@mui/material';
-import { ButtonStyle } from './button.styles';
+import { useContext } from 'react';
+import { ThemeContext } from '../../theme/themeProvider';
+import { ButtonStyleLight, ButtonStyleDark } from './button.styles';
 
 interface ButtonElementProps {
 	onClick: () => void;
@@ -7,11 +9,13 @@ interface ButtonElementProps {
 }
 
 export const ButtonElement = ({ onClick, disabled }: ButtonElementProps) => {
+	const { theme } = useContext(ThemeContext);
+
 	return (
 		<Button
 			variant='outlined'
 			size='large'
-			sx={ButtonStyle}
+			sx={theme === 'light' ? ButtonStyleLight : ButtonStyleDark}
 			onClick={onClick}
 			disabled={disabled}
 		>

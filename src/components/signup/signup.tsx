@@ -1,9 +1,9 @@
-import { InputTel, InputText } from '../common/input';
-import InputAdornments from '../common/password';
+import { InputTel, InputText } from '../common/input/input';
+import InputAdornments from '../common/input/password';
 import { CheckElement } from '../common/checkbox/checkbox';
 import { ButtonElement } from '../common/button/button';
 import { useEffect, useState } from 'react';
-import { FormStyles } from './signup.styles';
+import { FormContainer, Header1, Header2 } from './signup.styles';
 
 export const SignUpForm = () => {
 	const [name, setName] = useState<string>('');
@@ -41,7 +41,6 @@ export const SignUpForm = () => {
 	const [state, setState] = useState(<></>);
 
 	const handleConfirm = () => {
-		console.log(name);
 		setState(
 			<>
 				{state}
@@ -80,9 +79,9 @@ export const SignUpForm = () => {
 	return (
 		<>
 			<form>
-				<div style={FormStyles.FormContainer}>
-					<h1 style={FormStyles.Headers}>SIGN UP</h1>
-					<h2 style={FormStyles.Headers}>It's free.</h2>
+				<FormContainer>
+					<Header1>SIGN UP</Header1>
+					<Header2>It's free.</Header2>
 					<InputText
 						error={isErrorName}
 						type={'text'}
@@ -105,7 +104,7 @@ export const SignUpForm = () => {
 					/>
 					<CheckElement checked={checked} onChange={handleChangeChecked} />
 					<ButtonElement onClick={handleConfirm} disabled={!isValid} />
-				</div>
+				</FormContainer>
 			</form>
 			<div>{state}</div>
 		</>

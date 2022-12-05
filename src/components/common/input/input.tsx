@@ -1,6 +1,8 @@
 import { TextField } from '@mui/material';
 import { MuiTelInput } from 'mui-tel-input';
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from '../../theme/themeProvider';
+import { InputStyleDark, InputStyleLight } from './input.styles';
 
 interface InputProps {
 	type: string;
@@ -22,6 +24,8 @@ export const InputText = ({
 	onChange,
 	error,
 }: InputProps) => {
+	const { theme } = useContext(ThemeContext);
+
 	return (
 		<TextField
 			type={type}
@@ -31,6 +35,7 @@ export const InputText = ({
 			value={value}
 			onChange={onChange}
 			error={error}
+			sx={theme === 'light' ? InputStyleLight : InputStyleDark}
 		/>
 	);
 };
@@ -48,12 +53,15 @@ export const InputTel = ({
 	label = 'Enter your phone number',
 	required = true,
 }: InputTelProps) => {
+	const { theme } = useContext(ThemeContext);
+
 	return (
 		<MuiTelInput
 			value={value}
 			onChange={onChange}
 			label={label}
 			required={required}
+			sx={theme === 'light' ? InputStyleLight : InputStyleDark}
 		/>
 	);
 };

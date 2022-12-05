@@ -1,21 +1,21 @@
-interface FormStylesTypes {
-	FormContainer: { [key: string]: string };
-	Headers: { [key: string]: string };
-}
+import styled from 'styled-components';
 
-export const FormStyles: FormStylesTypes = {
-	FormContainer: {
-		display: 'flex',
-		flexDirection: 'column',
-		margin: '0 auto',
-		alignItems: 'stretch',
-		gap: '15px',
-		backgroundColor: 'rgba(25, 118, 210, 0.05)',
-		padding: '40px',
-		borderRadius: '20px',
-	},
-	Headers: {
-		margin: '0 auto',
-		color: '#545454',
-	},
-};
+export const FormContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	align-items: stretch;
+	gap: 15px;
+	background-color: rgba(25, 118, 210, 0.05);
+	border: 2px solid rgba(25, 118, 210, 0.2);
+	padding: 40px;
+	border-radius: 20px;
+`;
+
+export const Header1 = styled.h1`
+	margin: 0 auto;
+`;
+
+export const Header2 = styled.h2`
+	margin: 0 auto;
+`;
