@@ -2,12 +2,11 @@ import React, { MouseEventHandler, ReactElement, useState } from 'react';
 type Theme = 'light' | 'dark';
 type ThemeContextType = {
 	theme: Theme;
-	toggleTheme: MouseEventHandler<HTMLButtonElement> | undefined;
+	toggleTheme?: MouseEventHandler<HTMLButtonElement>;
 };
 
 export const ThemeContext = React.createContext<ThemeContextType>({
 	theme: 'light',
-	toggleTheme: undefined,
 });
 
 type ThemeProviderProps = {
