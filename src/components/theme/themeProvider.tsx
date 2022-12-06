@@ -1,10 +1,14 @@
-import React, { ReactElement, useState } from 'react';
+import React, { MouseEventHandler, ReactElement, useState } from 'react';
 type Theme = 'light' | 'dark';
-type ThemeContextType = { theme: Theme; toggleTheme: () => void };
+type ThemeContextType = {
+	theme: Theme;
+	toggleTheme: MouseEventHandler<HTMLButtonElement> | undefined;
+};
 
-export const ThemeContext = React.createContext<ThemeContextType>(
-	{} as ThemeContextType
-);
+export const ThemeContext = React.createContext<ThemeContextType>({
+	theme: 'light',
+	toggleTheme: undefined,
+});
 
 type ThemeProviderProps = {
 	children: ReactElement;
