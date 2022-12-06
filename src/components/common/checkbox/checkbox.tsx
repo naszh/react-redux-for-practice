@@ -1,5 +1,12 @@
 import { FormGroup, FormControlLabel, Checkbox } from '@mui/material';
-import { CheckboxStyle } from './checkbox.styles';
+import { useContext } from 'react';
+import { ThemeContext } from '../../theme/themeProvider';
+import {
+	CheckboxStyleLight,
+	CheckboxStyleDark,
+	FormControlLabelDark,
+	FormControlLabelLight,
+} from './checkbox.styles';
 
 interface CheckElementProps {
 	checked: boolean;
@@ -7,18 +14,20 @@ interface CheckElementProps {
 }
 
 export const CheckElement = ({ checked, onChange }: CheckElementProps) => {
+	const { theme } = useContext(ThemeContext);
+
 	return (
 		<FormGroup>
 			<FormControlLabel
 				control={
 					<Checkbox
-						sx={CheckboxStyle.Checkbox}
+						sx={theme === 'light' ? CheckboxStyleLight : CheckboxStyleDark}
 						checked={checked}
 						onChange={onChange}
 					/>
 				}
 				label='I accept all terms & conditions'
-				sx={CheckboxStyle.FormControlLabel}
+				sx={theme === 'light' ? FormControlLabelLight : FormControlLabelDark}
 			/>
 		</FormGroup>
 	);

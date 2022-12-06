@@ -6,7 +6,9 @@ import {
 	InputAdornment,
 	IconButton,
 } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { ThemeContext } from '../../theme/themeProvider';
+import { InputStyleDark, InputStyleLight } from './input.styles';
 
 interface InputAdornmentsProps {
 	value: string;
@@ -31,9 +33,14 @@ export default function InputAdornments({
 		event.preventDefault();
 	};
 
+	const { theme } = useContext(ThemeContext);
+
 	return (
 		<FormControl variant='outlined'>
-			<InputLabel htmlFor='outlined-adornment-password'>
+			<InputLabel
+				htmlFor='outlined-adornment-password'
+				sx={theme === 'light' ? InputStyleLight : InputStyleDark}
+			>
 				Create password
 			</InputLabel>
 			<OutlinedInput
@@ -49,12 +56,14 @@ export default function InputAdornments({
 							onClick={handleClickShowPassword}
 							onMouseDown={handleMouseDownPassword}
 							edge='end'
+							sx={theme === 'light' ? InputStyleLight : InputStyleDark}
 						>
 							{showPassword ? <VisibilityOff /> : <Visibility />}
 						</IconButton>
 					</InputAdornment>
 				}
 				label='Create password'
+				sx={theme === 'light' ? InputStyleLight : InputStyleDark}
 			/>
 		</FormControl>
 	);
