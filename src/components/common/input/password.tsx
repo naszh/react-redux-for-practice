@@ -44,14 +44,12 @@ export default function InputAdornments({
 	return (
 		<FormControl variant='outlined'>
 			<InputLabel
-				htmlFor='outlined-adornment-password'
 				sx={theme === 'light' ? InputStyleLight : InputStyleDark}
 				required={required}
 			>
 				{text}
 			</InputLabel>
 			<OutlinedInput
-				id='outlined-adornment-password'
 				type={showPassword ? 'text' : 'password'}
 				error={error}
 				value={value}
@@ -70,6 +68,7 @@ export default function InputAdornments({
 					</InputAdornment>
 				}
 				label={label}
+				required={required}
 				sx={theme === 'light' ? InputStyleLight : InputStyleDark}
 			/>
 		</FormControl>
