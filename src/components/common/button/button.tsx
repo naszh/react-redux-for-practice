@@ -1,11 +1,11 @@
 import { Button } from '@mui/material';
-import { useContext } from 'react';
+import { MouseEventHandler, useContext } from 'react';
 import { ThemeContext } from '../../theme/themeProvider';
 import { ButtonStyleLight, ButtonStyleDark } from './button.styles';
 
 interface ButtonElementProps {
 	text: string;
-	onClick?: () => void;
+	onClick?: MouseEventHandler<HTMLButtonElement>;
 	disabled?: boolean;
 }
 
