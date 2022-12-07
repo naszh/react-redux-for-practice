@@ -70,8 +70,8 @@ export const SignUpForm = () => {
 			emailValid ? setIsErrorEmail(false) : setIsErrorEmail(true);
 		}
 
-		if (password) {
-			minOneNum && minLetters!.length >= 3
+		if (password && minLetters) {
+			minOneNum && minLetters.length >= 3
 				? setIsErrorPassword(false)
 				: setIsErrorPassword(true);
 		}
