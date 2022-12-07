@@ -3,7 +3,7 @@ import InputAdornments from '../common/input/password';
 import { CheckElement } from '../common/checkbox/checkbox';
 import { ButtonElement } from '../common/button/button';
 import { useContext, useEffect, useState } from 'react';
-import { FormContainer, Header1, Header2 } from './signup.styles';
+import { FormContainer, Header1, Header2 } from '../common/sign/sign.styles';
 import { ThemeContext } from '../theme/themeProvider';
 
 export const SignUpForm = () => {
@@ -105,12 +105,22 @@ export const SignUpForm = () => {
 					/>
 					<InputTel value={phone} onChange={handleChangePhone} />
 					<InputAdornments
+						text={'Create password'}
+						label={'Create password'}
 						error={isErrorPassword}
 						value={password}
 						onChange={handleChangePassword}
 					/>
-					<CheckElement checked={checked} onChange={handleChangeChecked} />
-					<ButtonElement onClick={handleConfirm} disabled={!isValid} />
+					<CheckElement
+						label={'I accept all terms & conditions'}
+						checked={checked}
+						onChange={handleChangeChecked}
+					/>
+					<ButtonElement
+						onClick={handleConfirm}
+						disabled={!isValid}
+						text={'sign up'}
+					/>
 				</FormContainer>
 			</form>
 			<div>{state}</div>

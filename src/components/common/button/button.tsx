@@ -4,11 +4,16 @@ import { ThemeContext } from '../../theme/themeProvider';
 import { ButtonStyleLight, ButtonStyleDark } from './button.styles';
 
 interface ButtonElementProps {
-	onClick: () => void;
-	disabled: boolean;
+	text: string;
+	onClick?: () => void;
+	disabled?: boolean;
 }
 
-export const ButtonElement = ({ onClick, disabled }: ButtonElementProps) => {
+export const ButtonElement = ({
+	text,
+	onClick,
+	disabled,
+}: ButtonElementProps) => {
 	const { theme } = useContext(ThemeContext);
 
 	return (
@@ -19,7 +24,7 @@ export const ButtonElement = ({ onClick, disabled }: ButtonElementProps) => {
 			onClick={onClick}
 			disabled={disabled}
 		>
-			SIGN UP
+			{text}
 		</Button>
 	);
 };
