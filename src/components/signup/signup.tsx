@@ -117,6 +117,7 @@ export const SignUpForm = () => {
 						onChange={handleChangeChecked}
 					/>
 					<ButtonElement
+						size={'large'}
 						onClick={handleConfirm}
 						disabled={!isValid}
 						text={'sign up'}

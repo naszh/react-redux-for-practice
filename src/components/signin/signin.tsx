@@ -61,7 +61,7 @@ export const SignInForm = () => {
 					checked={checked}
 					onChange={handleChangeChecked}
 				/>
-				<ButtonElement text={'sign in'} disabled={!isValid} />
+				<ButtonElement size={'large'} text={'sign in'} disabled={!isValid} />
 			</FormContainer>
 		</form>
 	);

@@ -15,6 +15,7 @@ const App: FC = () => {
 			<ButtonElement
 				onClick={toggleTheme}
 				text={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+				size={'small'}
 			/>
 			<>
 				<Wrapper>
