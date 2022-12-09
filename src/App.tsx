@@ -3,14 +3,27 @@ import { Wrapper } from './App.styles';
 import { SignInForm } from './components/signin/signin';
 import { SignUpForm } from './components/signup/signup';
 import { ThemeContext } from './components/theme/themeProvider';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+	BrowserRouter as Router,
+	Routes,
+	Route,
+	Navigate,
+	Outlet,
+} from 'react-router-dom';
 import { Home } from './components/home/home';
 import { About } from './components/about/about';
 import { People } from './components/people/people';
 import { MaterialUISwitch } from './components/switch/switch';
+import { Oops } from './components/notFound/notFound';
 
 const App: FC = () => {
 	const { toggleTheme } = useContext(ThemeContext);
+
+	const WrapperState = () => (
+		<Wrapper>
+			<Outlet />
+		</Wrapper>
+	);
 
 	return (
 		<>
@@ -20,13 +33,13 @@ const App: FC = () => {
 					<Route path='/main' element={<People />} />
 					<Route path='/home' element={<Home />} />
 					<Route path='/about' element={<About />} />
-				</Routes>
-				<Wrapper>
-					<Routes>
+					<Route element={<WrapperState />}>
 						<Route path='/' element={<SignUpForm />} />
 						<Route path='/signin' element={<SignInForm />} />
-					</Routes>
-				</Wrapper>
+						<Route path='/signup' element={<Navigate to='/' />} />
+					</Route>
+					<Route path='*' element={<Oops />} />
+				</Routes>
 			</Router>
 		</>
 	);
