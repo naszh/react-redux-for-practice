@@ -1,12 +1,35 @@
+import { NavLink } from 'react-router-dom';
 import { HeaderContainer } from './header.styles';
 
 export const Header = () => {
 	return (
-		<HeaderContainer>
-			<p>Home</p>
-			<p>Main</p>
-			<p>About</p>
-			<p>Sign In</p>
-		</HeaderContainer>
+		<>
+			<HeaderContainer>
+				<NavLink
+					to={'/home'}
+					style={({ isActive }) =>
+						isActive ? { color: 'yellow' } : { color: 'inherit' }
+					}
+				>
+					<p>Home</p>
+				</NavLink>
+				<NavLink
+					to={'/main'}
+					style={({ isActive }) =>
+						isActive ? { color: 'yellow' } : { color: 'inherit' }
+					}
+				>
+					<p>Main</p>
+				</NavLink>
+				<NavLink
+					to={'/about'}
+					style={({ isActive }) =>
+						isActive ? { color: 'yellow' } : { color: 'inherit' }
+					}
+				>
+					<p>About</p>
+				</NavLink>
+			</HeaderContainer>
+		</>
 	);
 };

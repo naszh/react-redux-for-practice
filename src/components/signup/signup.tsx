@@ -3,7 +3,12 @@ import InputAdornments from '../common/input/password';
 import { CheckElement } from '../common/checkbox/checkbox';
 import { ButtonElement } from '../common/button/button';
 import { useContext, useEffect, useState } from 'react';
-import { FormContainer, Header1, Header2 } from '../common/sign/sign.styles';
+import {
+	FormContainer,
+	Header1,
+	Header2,
+	LinkStyled,
+} from '../common/sign/sign.styles';
 import { ThemeContext } from '../theme/themeProvider';
 
 export const SignUpForm = () => {
@@ -116,6 +121,7 @@ export const SignUpForm = () => {
 						checked={checked}
 						onChange={handleChangeChecked}
 					/>
+					<LinkStyled to='/signin'>Already a member? Sign In</LinkStyled>
 					<ButtonElement
 						size={'large'}
 						onClick={handleConfirm}

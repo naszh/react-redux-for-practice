@@ -3,8 +3,9 @@ import { ButtonElement } from '../common/button/button';
 import { CheckElement } from '../common/checkbox/checkbox';
 import { InputText } from '../common/input/input';
 import InputAdornments from '../common/input/password';
-import { FormContainer, Header1 } from '../common/sign/sign.styles';
+import { FormContainer, Header1, LinkStyled } from '../common/sign/sign.styles';
 import { ThemeContext } from '../theme/themeProvider';
+import { useNavigate } from 'react-router-dom';
 
 export const SignInForm = () => {
 	const { theme } = useContext(ThemeContext);
@@ -34,8 +35,14 @@ export const SignInForm = () => {
 			emailValid ? setIsErrorEmail(false) : setIsErrorEmail(true);
 		}
 
-		emailValid && password ? setIsValid(true) : setIsValid(false);
+		emailValid && password.length > 3 ? setIsValid(true) : setIsValid(false);
 	}, [email, password]);
+
+	const navigate = useNavigate();
+
+	const handleClick = () => {
+		navigate('/main');
+	};
 
 	return (
 		<form>
@@ -61,7 +68,13 @@ export const SignInForm = () => {
 					checked={checked}
 					onChange={handleChangeChecked}
 				/>
-				<ButtonElement size={'large'} text={'sign in'} disabled={!isValid} />
+				<ButtonElement
+					size={'large'}
+					text={'sign in'}
+					disabled={!isValid}
+					onClick={handleClick}
+				/>
+				<LinkStyled to='/'>Need an account? Sign Up</LinkStyled>
 			</FormContainer>
 		</form>
 	);
