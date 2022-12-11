@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { PersonElementProps, PersonInfoProps } from './person';
 
 export const PeopleList = styled.ul`
-	margin: 0;
+	margin: 20px;
 	padding: 0;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);

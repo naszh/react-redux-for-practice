@@ -1,10 +1,17 @@
+import { useContext, useEffect, useState } from 'react';
+
 import { InputTel, InputText } from '../common/input/input';
 import InputAdornments from '../common/input/password';
 import { CheckElement } from '../common/checkbox/checkbox';
 import { ButtonElement } from '../common/button/button';
-import { useContext, useEffect, useState } from 'react';
-import { FormContainer, Header1, Header2 } from './signup.styles';
 import { ThemeContext } from '../theme/themeProvider';
+
+import {
+	FormContainer,
+	Header1,
+	Header2,
+	LinkStyled,
+} from '../common/sign/sign.styles';
 
 export const SignUpForm = () => {
 	const [name, setName] = useState<string>('');
@@ -70,8 +77,8 @@ export const SignUpForm = () => {
 			emailValid ? setIsErrorEmail(false) : setIsErrorEmail(true);
 		}
 
-		if (password) {
-			minOneNum && minLetters!.length >= 3
+		if (password && minLetters) {
+			minOneNum && minLetters.length >= 3
 				? setIsErrorPassword(false)
 				: setIsErrorPassword(true);
 		}
@@ -105,12 +112,24 @@ export const SignUpForm = () => {
 					/>
 					<InputTel value={phone} onChange={handleChangePhone} />
 					<InputAdornments
+						text={'Create password'}
+						label={'Create password'}
 						error={isErrorPassword}
 						value={password}
 						onChange={handleChangePassword}
 					/>
-					<CheckElement checked={checked} onChange={handleChangeChecked} />
-					<ButtonElement onClick={handleConfirm} disabled={!isValid} />
+					<CheckElement
+						label={'I accept all terms & conditions'}
+						checked={checked}
+						onChange={handleChangeChecked}
+					/>
+					<LinkStyled to='/signin'>Already a member? Sign In</LinkStyled>
+					<ButtonElement
+						size={'large'}
+						onClick={handleConfirm}
+						disabled={!isValid}
+						text={'sign up'}
+					/>
 				</FormContainer>
 			</form>
 			<div>{state}</div>

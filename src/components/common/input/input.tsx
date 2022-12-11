@@ -1,6 +1,6 @@
+import React, { useContext } from 'react';
 import { TextField } from '@mui/material';
 import { MuiTelInput } from 'mui-tel-input';
-import React, { useContext } from 'react';
 import { ThemeContext } from '../../theme/themeProvider';
 import { InputStyleDark, InputStyleLight } from './input.styles';
 

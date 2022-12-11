@@ -1,25 +1,32 @@
+import { MouseEventHandler, useContext } from 'react';
 import { Button } from '@mui/material';
-import { useContext } from 'react';
 import { ThemeContext } from '../../theme/themeProvider';
 import { ButtonStyleLight, ButtonStyleDark } from './button.styles';
 
 interface ButtonElementProps {
-	onClick: () => void;
-	disabled: boolean;
+	text: string;
+	size: 'small' | 'medium' | 'large';
+	onClick?: MouseEventHandler<HTMLButtonElement>;
+	disabled?: boolean;
 }
 
-export const ButtonElement = ({ onClick, disabled }: ButtonElementProps) => {
+export const ButtonElement = ({
+	text,
+	size,
+	onClick,
+	disabled,
+}: ButtonElementProps) => {
 	const { theme } = useContext(ThemeContext);
 
 	return (
 		<Button
 			variant='outlined'
-			size='large'
+			size={size}
 			sx={theme === 'light' ? ButtonStyleLight : ButtonStyleDark}
 			onClick={onClick}
 			disabled={disabled}
 		>
-			SIGN UP
+			{text}
 		</Button>
 	);
 };

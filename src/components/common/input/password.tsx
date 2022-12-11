@@ -1,3 +1,4 @@
+import React, { useContext, useState } from 'react';
 import { VisibilityOff, Visibility } from '@mui/icons-material';
 import {
 	FormControl,
@@ -6,19 +7,24 @@ import {
 	InputAdornment,
 	IconButton,
 } from '@mui/material';
-import React, { useContext, useState } from 'react';
 import { ThemeContext } from '../../theme/themeProvider';
 import { InputStyleDark, InputStyleLight } from './input.styles';
 
 interface InputAdornmentsProps {
 	value: string;
 	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-	error: boolean;
+	label: string;
+	text: string;
+	required?: boolean;
+	error?: boolean;
 }
 
 export default function InputAdornments({
 	value,
 	onChange,
+	label,
+	text,
+	required = true,
 	error,
 }: InputAdornmentsProps) {
 	const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -38,13 +44,12 @@ export default function InputAdornments({
 	return (
 		<FormControl variant='outlined'>
 			<InputLabel
-				htmlFor='outlined-adornment-password'
 				sx={theme === 'light' ? InputStyleLight : InputStyleDark}
+				required={required}
 			>
-				Create password
+				{text}
 			</InputLabel>
 			<OutlinedInput
-				id='outlined-adornment-password'
 				type={showPassword ? 'text' : 'password'}
 				error={error}
 				value={value}
@@ -62,7 +67,8 @@ export default function InputAdornments({
 						</IconButton>
 					</InputAdornment>
 				}
-				label='Create password'
+				label={label}
+				required={required}
 				sx={theme === 'light' ? InputStyleLight : InputStyleDark}
 			/>
 		</FormControl>

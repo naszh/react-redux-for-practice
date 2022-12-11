@@ -11,9 +11,14 @@ import {
 interface CheckElementProps {
 	checked: boolean;
 	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	label: string;
 }
 
-export const CheckElement = ({ checked, onChange }: CheckElementProps) => {
+export const CheckElement = ({
+	checked,
+	onChange,
+	label,
+}: CheckElementProps) => {
 	const { theme } = useContext(ThemeContext);
 
 	return (
@@ -26,7 +31,7 @@ export const CheckElement = ({ checked, onChange }: CheckElementProps) => {
 						onChange={onChange}
 					/>
 				}
-				label='I accept all terms & conditions'
+				label={label}
 				sx={theme === 'light' ? FormControlLabelLight : FormControlLabelDark}
 			/>
 		</FormGroup>

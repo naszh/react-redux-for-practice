@@ -1,5 +1,6 @@
-import { PeopleList } from './people.styles';
+import { Header } from '../header/header';
 import { PersonElement } from './person';
+import { PeopleList } from './people.styles';
 
 const peopleArr = [
 	{
@@ -54,10 +55,13 @@ const peopleArr = [
 
 export const People = () => {
 	return (
-		<PeopleList>
-			{peopleArr.map(person => (
-				<PersonElement personInfo={person} key={person.id} />
-			))}
-		</PeopleList>
+		<>
+			<Header />
+			<PeopleList>
+				{peopleArr.map(person => (
+					<PersonElement personInfo={person} key={person.id} />
+				))}
+			</PeopleList>
+		</>
 	);
 };
