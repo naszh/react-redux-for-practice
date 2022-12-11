@@ -1,8 +1,4 @@
 import { FC, useContext } from 'react';
-import { Wrapper } from './App.styles';
-import { SignInForm } from './components/signin/signin';
-import { SignUpForm } from './components/signup/signup';
-import { ThemeContext } from './components/theme/themeProvider';
 import {
 	BrowserRouter as Router,
 	Routes,
@@ -10,11 +6,17 @@ import {
 	Navigate,
 	Outlet,
 } from 'react-router-dom';
+
+import { SignInForm } from './components/signin/signin';
+import { SignUpForm } from './components/signup/signup';
+import { ThemeContext } from './components/theme/themeProvider';
 import { Home } from './components/home/home';
 import { About } from './components/about/about';
 import { People } from './components/people/people';
 import { MaterialUISwitch } from './components/switch/switch';
 import { Oops } from './components/notFound/notFound';
+
+import { Wrapper } from './App.styles';
 
 const App: FC = () => {
 	const { toggleTheme } = useContext(ThemeContext);

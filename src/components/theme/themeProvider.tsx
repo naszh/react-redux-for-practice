@@ -1,4 +1,5 @@
 import React, { MouseEventHandler, ReactElement, useState } from 'react';
+
 type Theme = 'light' | 'dark';
 type ThemeContextType = {
 	theme: Theme;

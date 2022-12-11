@@ -1,5 +1,5 @@
-import { Button } from '@mui/material';
 import { MouseEventHandler, useContext } from 'react';
+import { Button } from '@mui/material';
 import { ThemeContext } from '../../theme/themeProvider';
 import { ButtonStyleLight, ButtonStyleDark } from './button.styles';
 

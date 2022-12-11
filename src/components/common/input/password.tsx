@@ -1,3 +1,4 @@
+import React, { useContext, useState } from 'react';
 import { VisibilityOff, Visibility } from '@mui/icons-material';
 import {
 	FormControl,
@@ -6,7 +7,6 @@ import {
 	InputAdornment,
 	IconButton,
 } from '@mui/material';
-import React, { useContext, useState } from 'react';
 import { ThemeContext } from '../../theme/themeProvider';
 import { InputStyleDark, InputStyleLight } from './input.styles';
 

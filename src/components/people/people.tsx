@@ -1,6 +1,6 @@
 import { Header } from '../header/header';
-import { PeopleList } from './people.styles';
 import { PersonElement } from './person';
+import { PeopleList } from './people.styles';
 
 const peopleArr = [
 	{
