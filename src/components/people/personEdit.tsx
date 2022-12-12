@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { ButtonElement } from '../common/button/button';
+import { Header } from '../header/header';
 import { PersonEditTitle } from './people.styles';
 
 export const PersonEditPage = () => {
@@ -11,10 +12,13 @@ export const PersonEditPage = () => {
 	};
 
 	return (
-		<PersonEditTitle>
-			Edit person with ID {id}
-			<br />
-			<ButtonElement onClick={goToMainPage} text={'go back'} size={'small'} />
-		</PersonEditTitle>
+		<>
+			<Header />
+			<PersonEditTitle>
+				Edit person with ID {id}
+				<br />
+				<ButtonElement onClick={goToMainPage} text={'go back'} size={'small'} />
+			</PersonEditTitle>
+		</>
 	);
 };
