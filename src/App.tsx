@@ -45,7 +45,14 @@ const App: FC = () => {
 						}
 					/>
 					<Route path='/home' element={<Home />} />
-					<Route path='/about' element={<About />} />
+					<Route
+						path='/about'
+						element={
+							<RequireAuth>
+								<About />
+							</RequireAuth>
+						}
+					/>
 					<Route element={<WrapperState />}>
 						<Route path='/' element={<SignUpForm />} />
 						<Route path='/signin' element={<SignInForm />} />
