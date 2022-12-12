@@ -23,3 +23,8 @@ export const PersonInfo = styled.p<PersonInfoProps>`
 	color: ${props =>
 		(props.personInfo?.id === 0 || props.personInfo?.id === 5) && props.color};
 `;
+
+export const PersonEditTitle = styled.div`
+	text-align: center;
+	margin: 30px;
+`;
