@@ -1,3 +1,4 @@
+import { LinkStyled } from '../common/sign/sign.styles';
 import { PersonInfo, PersonItem } from './people.styles';
 
 export interface PersonType {
@@ -24,17 +25,19 @@ export const PersonElement = ({
 	borderRadius,
 }: PersonElementProps) => {
 	return (
-		<PersonItem borderRadius={borderRadius} personInfo={personInfo}>
-			<PersonInfo>id: {personInfo.id}</PersonInfo>
-			<PersonInfo>name: {personInfo.name}</PersonInfo>
-			<PersonInfo>age: {personInfo.age}</PersonInfo>
-			<PersonInfo personInfo={personInfo} color='blue'>
-				hometown: {personInfo.hometown}
-			</PersonInfo>
-			<PersonInfo personInfo={personInfo} color='lightgreen'>
-				interests: {personInfo.interests.join(', ')}
-			</PersonInfo>
-			<PersonInfo>hasPet: {personInfo.hasPet.toString()}</PersonInfo>
-		</PersonItem>
+		<LinkStyled to={`/main/${personInfo.id}/edit`}>
+			<PersonItem borderRadius={borderRadius} personInfo={personInfo}>
+				<PersonInfo>id: {personInfo.id}</PersonInfo>
+				<PersonInfo>name: {personInfo.name}</PersonInfo>
+				<PersonInfo>age: {personInfo.age}</PersonInfo>
+				<PersonInfo personInfo={personInfo} color='blue'>
+					hometown: {personInfo.hometown}
+				</PersonInfo>
+				<PersonInfo personInfo={personInfo} color='lightgreen'>
+					interests: {personInfo.interests.join(', ')}
+				</PersonInfo>
+				<PersonInfo>hasPet: {personInfo.hasPet.toString()}</PersonInfo>
+			</PersonItem>
+		</LinkStyled>
 	);
 };

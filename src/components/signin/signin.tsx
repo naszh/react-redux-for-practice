@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 import { ButtonElement } from '../common/button/button';
 import { CheckElement } from '../common/checkbox/checkbox';
@@ -8,6 +8,8 @@ import InputAdornments from '../common/input/password';
 import { ThemeContext } from '../theme/themeProvider';
 
 import { FormContainer, Header1, LinkStyled } from '../common/sign/sign.styles';
+import { AuthContext } from '../../private/authProvider';
+import { PersonType } from '../people/person';
 
 export const SignInForm = () => {
 	const { theme } = useContext(ThemeContext);
@@ -17,6 +19,9 @@ export const SignInForm = () => {
 
 	const [isErrorEmail, setIsErrorEmail] = useState<boolean>(false);
 	const [isValid, setIsValid] = useState<boolean>(false);
+
+	const navigate: NavigateFunction = useNavigate();
+	const { signIn } = useContext(AuthContext);
 
 	const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setEmail(event.target.value);
@@ -30,6 +35,12 @@ export const SignInForm = () => {
 		setChecked(event.target.checked);
 	};
 
+	const handleClick = () => {
+		signIn({} as PersonType, () => {
+			navigate('/main', { replace: true });
+		});
+	};
+
 	useEffect(() => {
 		const emailValid = email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
 
@@ -39,12 +50,6 @@ export const SignInForm = () => {
 
 		emailValid && password.length > 3 ? setIsValid(true) : setIsValid(false);
 	}, [email, password]);
-
-	const navigate = useNavigate();
-
-	const handleClick = () => {
-		navigate('/main');
-	};
 
 	return (
 		<form>

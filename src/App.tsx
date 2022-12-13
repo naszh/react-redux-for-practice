@@ -15,8 +15,11 @@ import { About } from './components/about/about';
 import { People } from './components/people/people';
 import { MaterialUISwitch } from './components/switch/switch';
 import { Oops } from './components/notFound/notFound';
+import { PersonEditPage } from './components/people/personEdit';
 
 import { Wrapper } from './App.styles';
+import { AuthProvider } from './private/authProvider';
+import { RequireAuth } from './private/requireAuth';
 
 const App: FC = () => {
 	const { toggleTheme } = useContext(ThemeContext);
@@ -28,13 +31,28 @@ const App: FC = () => {
 	);
 
 	return (
-		<>
+		<AuthProvider>
 			<MaterialUISwitch onClick={toggleTheme} />
 			<Router>
 				<Routes>
 					<Route path='/main' element={<People />} />
+					<Route
+						path='/main/:id/edit'
+						element={
+							<RequireAuth>
+								<PersonEditPage />
+							</RequireAuth>
+						}
+					/>
 					<Route path='/home' element={<Home />} />
-					<Route path='/about' element={<About />} />
+					<Route
+						path='/about'
+						element={
+							<RequireAuth>
+								<About />
+							</RequireAuth>
+						}
+					/>
 					<Route element={<WrapperState />}>
 						<Route path='/' element={<SignUpForm />} />
 						<Route path='/signin' element={<SignInForm />} />
@@ -43,7 +61,7 @@ const App: FC = () => {
 					<Route path='*' element={<Oops />} />
 				</Routes>
 			</Router>
-		</>
+		</AuthProvider>
 	);
 };
 

@@ -57,6 +57,7 @@ export const People = () => {
 	return (
 		<>
 			<Header />
+			<p>In order to edit a user you need to click on it</p>
 			<PeopleList>
 				{peopleArr.map(person => (
 					<PersonElement personInfo={person} key={person.id} />
@@ -65,3 +66,4 @@ export const People = () => {
 		</>
 	);
 };
+export { PersonElement };
