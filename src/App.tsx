@@ -12,7 +12,6 @@ import { SignUpForm } from './components/signup/signup';
 import { ThemeContext } from './components/theme/themeProvider';
 import { Home } from './components/home/home';
 import { About } from './components/about/about';
-import { People } from './components/people/people';
 import { MaterialUISwitch } from './components/switch/switch';
 import { Oops } from './components/notFound/notFound';
 import { PersonEditPage } from './components/people/personEdit';
@@ -20,6 +19,7 @@ import { PersonEditPage } from './components/people/personEdit';
 import { Wrapper } from './App.styles';
 import { AuthProvider } from './private/authProvider';
 import { RequireAuth } from './private/requireAuth';
+import { FilmsPage } from './components/main/filmsFromApi';
 
 const App: FC = () => {
 	const { toggleTheme } = useContext(ThemeContext);
@@ -35,7 +35,7 @@ const App: FC = () => {
 			<MaterialUISwitch onClick={toggleTheme} />
 			<Router>
 				<Routes>
-					<Route path='/main' element={<People />} />
+					<Route path='/main' element={<FilmsPage />} />
 					<Route
 						path='/main/:id/edit'
 						element={
