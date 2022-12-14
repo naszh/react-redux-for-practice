@@ -1,5 +1,6 @@
 import { Header } from '../header/header';
 import { PersonElement } from './person';
+
 import { PeopleList } from './people.styles';
 
 const peopleArr = [

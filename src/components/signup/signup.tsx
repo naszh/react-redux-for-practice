@@ -1,17 +1,15 @@
 import { useContext, useEffect, useState } from 'react';
 
-import { InputTel, InputText } from '../common/input/input';
-import InputAdornments from '../common/input/password';
-import { CheckElement } from '../common/checkbox/checkbox';
-import { ButtonElement } from '../common/button/button';
+import {
+	CheckElement,
+	ButtonElement,
+	InputAdornments,
+	InputTel,
+	InputText,
+} from '../common';
 import { ThemeContext } from '../theme/themeProvider';
 
-import {
-	FormContainer,
-	Header1,
-	Header2,
-	LinkStyled,
-} from '../common/sign/sign.styles';
+import { FormContainer, Header1, Header2, LinkStyled } from '../common';
 
 export const SignUpForm = () => {
 	const [name, setName] = useState<string>('');

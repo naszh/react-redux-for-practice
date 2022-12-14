@@ -1,5 +1,6 @@
 import React, { createContext, useState } from 'react';
-import { PersonType } from '../components/people/person';
+
+import { PersonType } from '../components';
 
 interface AuthContextType {
 	person: PersonType | null;

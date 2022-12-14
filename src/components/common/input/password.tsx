@@ -7,7 +7,9 @@ import {
 	InputAdornment,
 	IconButton,
 } from '@mui/material';
+
 import { ThemeContext } from '../../theme/themeProvider';
+
 import { InputStyleDark, InputStyleLight } from './input.styles';
 
 interface InputAdornmentsProps {
@@ -19,7 +21,7 @@ interface InputAdornmentsProps {
 	error?: boolean;
 }
 
-export default function InputAdornments({
+export function InputAdornments({
 	value,
 	onChange,
 	label,

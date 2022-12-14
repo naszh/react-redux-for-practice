@@ -1,6 +1,8 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { ButtonElement } from '../common/button/button';
+
+import { ButtonElement } from '../common';
 import { Header } from '../header/header';
+
 import { PersonEditTitle } from './people.styles';
 
 export const PersonEditPage = () => {

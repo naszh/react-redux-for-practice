@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
-import { kinopoiskApi, token } from '../axios/api';
+
+import { kinopoiskApi, token } from '../../axios/api';
 import { Header } from '../header/header';
 import { FilmsList, FilmsResponseType } from './filmsMap';
+
 import { MainStyles } from './main.styles';
 
 export const FilmsPage = () => {
