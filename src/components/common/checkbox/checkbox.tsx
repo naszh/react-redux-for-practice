@@ -1,6 +1,8 @@
-import { FormGroup, FormControlLabel, Checkbox } from '@mui/material';
 import { useContext } from 'react';
+import { FormGroup, FormControlLabel, Checkbox } from '@mui/material';
+
 import { ThemeContext } from '../../theme/themeProvider';
+
 import {
 	CheckboxStyleLight,
 	CheckboxStyleDark,

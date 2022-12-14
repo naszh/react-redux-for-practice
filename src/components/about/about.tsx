@@ -1,4 +1,5 @@
 import ClockLoader from 'react-spinners/ClockLoader';
+
 import { Header } from '../header/header';
 
 export const About = () => {

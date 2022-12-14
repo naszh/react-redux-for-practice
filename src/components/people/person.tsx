@@ -1,4 +1,5 @@
-import { LinkStyled } from '../common/sign/sign.styles';
+import { LinkStyled } from '../common';
+
 import { PersonInfo, PersonItem } from './people.styles';
 
 export interface PersonType {

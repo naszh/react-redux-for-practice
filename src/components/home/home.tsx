@@ -1,4 +1,5 @@
 import { Header } from '../header/header';
+
 import { HomeStyles } from './home.styles';
 
 export const Home = () => {

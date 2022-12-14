@@ -1,14 +1,16 @@
 import { useContext, useEffect, useState } from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 
-import { ButtonElement } from '../common/button/button';
-import { CheckElement } from '../common/checkbox/checkbox';
-import { InputText } from '../common/input/input';
-import InputAdornments from '../common/input/password';
+import {
+	ButtonElement,
+	CheckElement,
+	InputText,
+	InputAdornments,
+} from '../common';
 import { ThemeContext } from '../theme/themeProvider';
 
-import { FormContainer, Header1, LinkStyled } from '../common/sign/sign.styles';
-import { AuthContext } from '../../private/authProvider';
+import { FormContainer, Header1, LinkStyled } from '../common';
+import { AuthContext } from '../../private/';
 import { PersonType } from '../people/person';
 
 export const SignInForm = () => {

@@ -1,0 +1,11 @@
+export { ThemeContext, ThemeProvider } from './theme/themeProvider';
+export { Home } from './home/home';
+export { About } from './about/about';
+export { Oops } from './notFound/notFound';
+export { FilmsPage } from './main/filmsPageApi';
+export { People } from './people/people';
+export { PersonEditPage } from './people/personEdit';
+export type { PersonType } from './people/person';
+export { SignInForm } from './signin/signin';
+export { SignUpForm } from './signup/signup';
+export { MaterialUISwitch } from './switch/switch';
