@@ -1,5 +1,5 @@
 interface MainStylesType {
-	H: {
+	FilmsListHeader: {
 		textAlign: 'center' | 'right' | 'left';
 	};
 	FilmsContainer: {
@@ -19,7 +19,7 @@ interface MainStylesType {
 }
 
 export const MainStyles: MainStylesType = {
-	H: {
+	FilmsListHeader: {
 		textAlign: 'center',
 	},
 	FilmsContainer: {

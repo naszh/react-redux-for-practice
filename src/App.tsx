@@ -19,7 +19,7 @@ import { PersonEditPage } from './components/people/personEdit';
 import { Wrapper } from './App.styles';
 import { AuthProvider } from './private/authProvider';
 import { RequireAuth } from './private/requireAuth';
-import { FilmsPage } from './components/main/filmsFromApi';
+import { FilmsPage } from './components/main/filmsPageApi';
 
 const App: FC = () => {
 	const { toggleTheme } = useContext(ThemeContext);
