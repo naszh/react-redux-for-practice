@@ -1,6 +1,8 @@
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 import { MainStyles } from './main.styles';
 
-export interface FilmsResponseType {
+export interface Film {
 	alternativeName: string | null;
 	description: string | null;
 	enName: string | null;
@@ -48,15 +50,12 @@ export interface FilmsResponseType {
 	year: number;
 }
 
-interface FilmsListProps {
-	films: Array<FilmsResponseType>;
-}
-
-export const FilmsList = ({ films }: FilmsListProps): JSX.Element => {
+export const FilmsList = (): JSX.Element => {
+	const films = useSelector((state: RootState) => state.films.initArr);
 	return (
 		<>
 			{films.map(
-				(film: FilmsResponseType) =>
+				(film: Film) =>
 					film.poster?.url && (
 						<div key={film.id} style={MainStyles.FilmItem}>
 							<img

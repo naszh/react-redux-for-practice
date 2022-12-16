@@ -1,15 +1,21 @@
 import ReactDOM from 'react-dom/client';
-import { ThemeProvider } from './components';
+import { Provider } from 'react-redux';
+
 import App from './App';
+import { ThemeProvider } from './components';
+import { store } from './redux/store';
+
 import './index.css';
 
 const root = ReactDOM.createRoot(
 	document.getElementById('root') as HTMLElement
 );
 root.render(
-	<ThemeProvider>
-		<App />
-	</ThemeProvider>
+	<Provider store={store}>
+		<ThemeProvider>
+			<App />
+		</ThemeProvider>
+	</Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
