@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { removeFilm } from '../../redux/reducer/filmsSlice';
-import { RootState } from '../../redux/store';
+import { AppDispatch, RootState } from '../../redux/store';
 import { ButtonElement } from '../common';
 import { MainStyles } from './main.styles';
 
@@ -54,7 +54,7 @@ export interface Film {
 
 export const FilmsList = (): JSX.Element => {
 	const films = useSelector((state: RootState) => state.films.initArr);
-	const dispatch = useDispatch();
+	const dispatch = useDispatch<AppDispatch>();
 
 	const HandleClickRemove = (id: number) => {
 		dispatch(removeFilm(id));
