@@ -20,8 +20,12 @@ const filmsSlice = createSlice({
 		addFilms: (state, { payload }: PayloadAction<AddFilmsType>) => {
 			state.initArr = payload.filmsArr;
 		},
+		removeFilm: (state: any, action: PayloadAction<number>) => {
+			const filmId: number = action.payload;
+			state.initArr = state.initArr.filter((film: Film) => film.id !== filmId);
+		},
 	},
 });
 
-export const { addFilms } = filmsSlice.actions;
+export const { addFilms, removeFilm } = filmsSlice.actions;
 export const filmsReducer = filmsSlice.reducer;

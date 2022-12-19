@@ -1,5 +1,7 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeFilm } from '../../redux/reducer/filmsSlice';
 import { RootState } from '../../redux/store';
+import { ButtonElement } from '../common';
 import { MainStyles } from './main.styles';
 
 export interface Film {
@@ -52,6 +54,12 @@ export interface Film {
 
 export const FilmsList = (): JSX.Element => {
 	const films = useSelector((state: RootState) => state.films.initArr);
+	const dispatch = useDispatch();
+
+	const HandleClickRemove = (id: number) => {
+		dispatch(removeFilm(id));
+	};
+
 	return (
 		<>
 			{films.map(
@@ -68,6 +76,13 @@ export const FilmsList = (): JSX.Element => {
 								{film.names[1]?.name || film.names[0].name} | {film.type}
 							</p>
 							<p>Rating imdb: {film.rating.imdb}</p>
+							<ButtonElement
+								text={'viewed'}
+								size={'small'}
+								onClick={() => {
+									HandleClickRemove(film.id);
+								}}
+							/>
 						</div>
 					)
 			)}
