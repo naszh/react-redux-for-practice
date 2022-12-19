@@ -9,12 +9,25 @@ interface MainStylesType {
 		gap: number | string;
 	};
 	FilmItem: {
+		display: string;
+		flexDirection: 'column' | 'row';
+		justifyContent: string;
 		padding: string;
 		backgroundColor: string;
 	};
 	FilmPoster: {
 		width: string;
 		borderRadius: string;
+		display: string;
+		height: string;
+		flex: string;
+		aspectRatio: string;
+	};
+	FilmInfo: {
+		display: string;
+		flexGrow: number;
+		flexDirection: 'column' | 'row';
+		justifyContent: string;
 	};
 }
 
@@ -29,11 +42,24 @@ export const MainStyles: MainStylesType = {
 		gap: 15,
 	},
 	FilmItem: {
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'space-between',
 		padding: '10px',
 		backgroundColor: 'rgba(25,118,210,0.2)',
 	},
 	FilmPoster: {
 		width: '100%',
+		height: 'auto',
+		flex: '0 0 auto',
 		borderRadius: '10px',
+		display: 'block',
+		aspectRatio: '3 / 4',
+	},
+	FilmInfo: {
+		display: 'flex',
+		flexGrow: 1,
+		flexDirection: 'column',
+		justifyContent: 'end',
 	},
 };

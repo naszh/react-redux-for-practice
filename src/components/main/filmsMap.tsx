@@ -71,18 +71,19 @@ export const FilmsList = (): JSX.Element => {
 								alt={`poster of ${film.names[1]?.name || film.names[0]?.name}`}
 								style={MainStyles.FilmPoster}
 							/>
-
-							<p>
-								{film.names[1]?.name || film.names[0].name} | {film.type}
-							</p>
-							<p>Rating imdb: {film.rating.imdb}</p>
-							<ButtonElement
-								text={'viewed'}
-								size={'small'}
-								onClick={() => {
-									HandleClickRemove(film.id);
-								}}
-							/>
+							<div style={MainStyles.FilmInfo}>
+								<p>
+									{film.names[1]?.name || film.names[0].name} | {film.type}
+								</p>
+								<p>Rating imdb: {film.rating.imdb}</p>
+								<ButtonElement
+									text={'viewed'}
+									size={'small'}
+									onClick={() => {
+										HandleClickRemove(film.id);
+									}}
+								/>
+							</div>
 						</div>
 					)
 			)}
