@@ -9,3 +9,4 @@ export type { PersonType } from './people/person';
 export { SignInForm } from './signin/signin';
 export { SignUpForm } from './signup/signup';
 export { MaterialUISwitch } from './switch/switch';
+export { MyFavouriteFilms } from './main/favourites/filmsFav';

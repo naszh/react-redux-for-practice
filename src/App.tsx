@@ -17,6 +17,7 @@ import {
 	SignInForm,
 	SignUpForm,
 	MaterialUISwitch,
+	MyFavouriteFilms,
 } from './components';
 import { AuthProvider, RequireAuth } from './private';
 import { kinopoiskApi, token } from './axios/api';
@@ -56,6 +57,7 @@ const App: FC = () => {
 			<Router>
 				<Routes>
 					<Route path='/main' element={<FilmsPage />} />
+					<Route path='/favourites' element={<MyFavouriteFilms />} />
 					{/* <Route
 						path='/main/:id/edit'
 						element={

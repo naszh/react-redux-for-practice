@@ -1,6 +1,21 @@
+import { TbHeart, TbHeartPlus } from 'react-icons/tb';
+import styled from 'styled-components';
+
 interface MainStylesType {
+	FilmsHeaderContainer: {
+		display: string;
+		gridTemplateColumns: string;
+		alignItems: string;
+	};
 	FilmsListHeader: {
 		textAlign: 'center' | 'right' | 'left';
+	};
+	LinkToFav: {
+		textDecoration: string;
+		color: string;
+	};
+	LinkContainer: {
+		margin: string;
 	};
 	FilmsContainer: {
 		display: string;
@@ -29,11 +44,26 @@ interface MainStylesType {
 		flexDirection: 'column' | 'row';
 		justifyContent: string;
 	};
+	FilmName: {
+		margin: string;
+	};
 }
 
 export const MainStyles: MainStylesType = {
+	FilmsHeaderContainer: {
+		display: 'grid',
+		gridTemplateColumns: '2fr 1fr',
+		alignItems: 'center',
+	},
 	FilmsListHeader: {
-		textAlign: 'center',
+		textAlign: 'right',
+	},
+	LinkToFav: {
+		textDecoration: 'none',
+		color: 'inherit',
+	},
+	LinkContainer: {
+		margin: '0 auto',
 	},
 	FilmsContainer: {
 		display: 'grid',
@@ -62,4 +92,19 @@ export const MainStyles: MainStylesType = {
 		flexDirection: 'column',
 		justifyContent: 'end',
 	},
+	FilmName: {
+		margin: '0',
+	},
 };
+
+export const Heart = styled(TbHeart)`
+	font-size: 28px;
+	vertical-align: sub;
+	cursor: pointer;
+`;
+
+export const HeartPlus = styled(TbHeartPlus)`
+	font-size: 28px;
+	align-self: end;
+	cursor: pointer;
+`;

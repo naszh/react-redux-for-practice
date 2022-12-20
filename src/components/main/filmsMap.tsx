@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeFilm } from '../../redux/reducer/filmsSlice';
 import { AppDispatch, RootState } from '../../redux/store';
 import { ButtonElement } from '../common';
-import { MainStyles } from './main.styles';
+import { HeartPlus, MainStyles } from './main.styles';
 
 export interface Film {
 	alternativeName: string | null;
@@ -71,8 +71,9 @@ export const FilmsList = (): JSX.Element => {
 								alt={`poster of ${film.names[1]?.name || film.names[0]?.name}`}
 								style={MainStyles.FilmPoster}
 							/>
+							<HeartPlus />
 							<div style={MainStyles.FilmInfo}>
-								<p>
+								<p style={MainStyles.FilmName}>
 									{film.names[1]?.name || film.names[0].name} | {film.type}
 								</p>
 								<p>Rating imdb: {film.rating.imdb}</p>
