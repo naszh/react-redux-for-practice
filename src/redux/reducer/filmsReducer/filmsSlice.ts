@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Film } from '../../components/main/filmsMap';
+import { Film } from '../../../components/main/filmsMap';
 
 interface InitialStateType {
 	initArr: Array<Film>;
@@ -20,7 +20,7 @@ const filmsSlice = createSlice({
 		addFilms: (state, { payload }: PayloadAction<AddFilmsType>) => {
 			state.initArr = payload.filmsArr;
 		},
-		removeFilm: (state: any, action: PayloadAction<number>) => {
+		removeFilm: (state, action: PayloadAction<number>) => {
 			const filmId: number = action.payload;
 			state.initArr = state.initArr.filter((film: Film) => film.id !== filmId);
 		},

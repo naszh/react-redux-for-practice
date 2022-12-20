@@ -1,5 +1,7 @@
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeFilm } from '../../redux/reducer/filmsSlice';
+import { addFilmToFav } from '../../redux/reducer/favReducer/favouritesSlice';
+import { removeFilm } from '../../redux/reducer/filmsReducer/filmsSlice';
 import { AppDispatch, RootState } from '../../redux/store';
 import { ButtonElement } from '../common';
 import { HeartPlus, MainStyles } from './main.styles';
@@ -60,6 +62,10 @@ export const FilmsList = (): JSX.Element => {
 		dispatch(removeFilm(id));
 	};
 
+	const handleAddToFav = (film: Film) => {
+		dispatch(addFilmToFav(film));
+	};
+
 	return (
 		<>
 			{films.map(
@@ -71,7 +77,7 @@ export const FilmsList = (): JSX.Element => {
 								alt={`poster of ${film.names[1]?.name || film.names[0]?.name}`}
 								style={MainStyles.FilmPoster}
 							/>
-							<HeartPlus />
+							<HeartPlus onClick={() => handleAddToFav(film)} />
 							<div style={MainStyles.FilmInfo}>
 								<p style={MainStyles.FilmName}>
 									{film.names[1]?.name || film.names[0].name} | {film.type}

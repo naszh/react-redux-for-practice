@@ -22,28 +22,27 @@ import {
 import { AuthProvider, RequireAuth } from './private';
 import { kinopoiskApi, token } from './axios/api';
 import { AppDispatch } from './redux/store';
-import { addFilms } from './redux/reducer/filmsSlice';
-
+import { addFilms } from './redux/reducer/filmsReducer/filmsSlice';
 import { Wrapper } from './App.styles';
 
 const App: FC = () => {
 	const { toggleTheme } = useContext(ThemeContext);
 	const dispatch = useDispatch<AppDispatch>();
 
-	const getFilms = async () => {
-		try {
-			const response = await kinopoiskApi.get(
-				`/movie?field=year&search=2021-2022&limit=25&token=${token}`
-			);
-			dispatch(addFilms({ filmsArr: response.data.docs }));
-		} catch (err) {
-			console.log(err);
-		}
-	};
-
 	useEffect(() => {
+		const getFilms = async () => {
+			try {
+				const response = await kinopoiskApi.get(
+					`/movie?field=year&search=2021-2022&limit=25&token=${token}`
+				);
+				dispatch(addFilms({ filmsArr: response.data.docs }));
+			} catch (err) {
+				console.log(err);
+			}
+		};
+
 		getFilms();
-	}, []);
+	}, [dispatch]);
 
 	const WrapperState = () => (
 		<Wrapper>
