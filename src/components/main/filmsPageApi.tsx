@@ -8,6 +8,7 @@ import { Heart, MainStyles } from './main.styles';
 
 export const FilmsPage = () => {
 	const count = useSelector((state: RootState) => state.favourites.counter);
+	const { error } = useSelector((state: RootState) => state.films);
 
 	return (
 		<>
@@ -21,6 +22,7 @@ export const FilmsPage = () => {
 					</LinkStyled>
 				</div>
 			</div>
+			{error}
 			<div style={MainStyles.FilmsContainer}>
 				<FilmsList />
 			</div>

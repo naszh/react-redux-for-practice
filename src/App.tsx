@@ -20,9 +20,9 @@ import {
 	MyFavouriteFilms,
 } from './components';
 import { AuthProvider, RequireAuth } from './private';
-import { kinopoiskApi, token } from './axios/api';
-import { AppDispatch } from './redux/store';
-import { addFilms } from './redux/reducer/filmsReducer/filmsSlice';
+import { AppDispatch, RootState } from './redux/store';
+import { fetchFilms } from './redux/reducer/filmsReducer/filmsSlice';
+
 import { Wrapper } from './App.styles';
 
 const App: FC = () => {
@@ -30,19 +30,8 @@ const App: FC = () => {
 	const dispatch = useDispatch<AppDispatch>();
 
 	useEffect(() => {
-		const getFilms = async () => {
-			try {
-				const response = await kinopoiskApi.get(
-					`/movie?field=year&search=2021-2022&limit=25&token=${token}`
-				);
-				dispatch(addFilms({ filmsArr: response.data.docs }));
-			} catch (err) {
-				console.log(err);
-			}
-		};
-
-		getFilms();
-	}, [dispatch]);
+		dispatch(fetchFilms());
+	}, []);
 
 	const WrapperState = () => (
 		<Wrapper>
