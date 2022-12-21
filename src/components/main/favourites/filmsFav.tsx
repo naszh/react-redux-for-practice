@@ -10,18 +10,6 @@ export const MyFavouriteFilms = () => {
 		(state: RootState) => state.favourites.initArr
 	);
 
-	const deleteDuplicate = () => {
-		const uniqFavourites = favourites.reduce((acc: Array<Film>, curr: Film) => {
-			if (!acc.find((el: Film) => el.id == curr.id)) {
-				acc.push(curr);
-			}
-			return acc;
-		}, []);
-		return uniqFavourites;
-	};
-
-	const arrFavourites = deleteDuplicate();
-
 	return (
 		<>
 			<Header />
@@ -34,7 +22,7 @@ export const MyFavouriteFilms = () => {
 				<p>You haven't added any movies to your favourites</p>
 			) : (
 				<div>
-					{arrFavourites.map((el: Film) => (
+					{favourites.map((el: Film) => (
 						<FavFilmBlock key={el.id}>
 							<div>
 								{el.alternativeName} | {el.movieLength} minutes | {el.year}

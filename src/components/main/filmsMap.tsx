@@ -1,6 +1,8 @@
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addFilmToFav } from '../../redux/reducer/favReducer/favouritesSlice';
+import {
+	addFilmToFav,
+	incrementCounter,
+} from '../../redux/reducer/favReducer/favouritesSlice';
 import { removeFilm } from '../../redux/reducer/filmsReducer/filmsSlice';
 import { AppDispatch, RootState } from '../../redux/store';
 import { ButtonElement } from '../common';
@@ -64,6 +66,7 @@ export const FilmsList = (): JSX.Element => {
 
 	const handleAddToFav = (film: Film) => {
 		dispatch(addFilmToFav(film));
+		dispatch(incrementCounter());
 	};
 
 	return (
