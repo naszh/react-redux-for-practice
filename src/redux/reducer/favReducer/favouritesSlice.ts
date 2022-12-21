@@ -23,11 +23,16 @@ const favouritesSlice = createSlice({
 			});
 			if (!isIn) state.initArr.push(tempFilm);
 		},
+		removeFilmFromFav: (state, action: PayloadAction<number>) => {
+			const filmId: number = action.payload;
+			state.initArr = state.initArr.filter((film: Film) => film.id !== filmId);
+		},
 		incrementCounter: state => {
 			state.counter = state.initArr.length;
 		},
 	},
 });
 
-export const { addFilmToFav, incrementCounter } = favouritesSlice.actions;
+export const { addFilmToFav, removeFilmFromFav, incrementCounter } =
+	favouritesSlice.actions;
 export const favReducer = favouritesSlice.reducer;
