@@ -1,14 +1,20 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Film } from '../../../components/main/filmsMap';
 
+interface FillType {
+	style: { fill: string };
+}
+
 interface InitialStateType {
 	initArr: Array<Film>;
 	counter: number;
+	fill: FillType;
 }
 
 const initialState: InitialStateType = {
 	initArr: [],
 	counter: 0,
+	fill: { style: { fill: 'none' } },
 };
 
 const favouritesSlice = createSlice({
@@ -27,12 +33,19 @@ const favouritesSlice = createSlice({
 			const filmId: number = action.payload;
 			state.initArr = state.initArr.filter((film: Film) => film.id !== filmId);
 		},
-		incrementCounter: state => {
+		launchCounter: state => {
 			state.counter = state.initArr.length;
+		},
+		toggleFillHeart: (state, action: PayloadAction<FillType>) => {
+			state.fill = action.payload;
 		},
 	},
 });
 
-export const { addFilmToFav, removeFilmFromFav, incrementCounter } =
-	favouritesSlice.actions;
+export const {
+	addFilmToFav,
+	removeFilmFromFav,
+	launchCounter,
+	toggleFillHeart,
+} = favouritesSlice.actions;
 export const favReducer = favouritesSlice.reducer;

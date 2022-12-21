@@ -67,7 +67,7 @@ export const MainStyles: MainStylesType = {
 	},
 	FilmsContainer: {
 		display: 'grid',
-		gridTemplateColumns: '1fr 1fr 1fr 1fr',
+		gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr',
 		margin: '20px',
 		gap: 15,
 	},

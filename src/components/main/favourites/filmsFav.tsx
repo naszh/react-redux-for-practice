@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import {
-	incrementCounter,
+	toggleFillHeart,
+	launchCounter,
 	removeFilmFromFav,
 } from '../../../redux/reducer/favReducer/favouritesSlice';
 import { AppDispatch, RootState } from '../../../redux/store';
@@ -23,7 +24,8 @@ export const MyFavouriteFilms = () => {
 
 	const HandleClickRemove = (id: number) => {
 		dispatch(removeFilmFromFav(id));
-		dispatch(incrementCounter());
+		dispatch(launchCounter());
+		dispatch(toggleFillHeart({ style: { fill: 'none' } }));
 	};
 
 	return (

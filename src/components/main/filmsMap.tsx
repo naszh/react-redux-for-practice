@@ -1,7 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import {
 	addFilmToFav,
-	incrementCounter,
+	toggleFillHeart,
+	launchCounter,
+	removeFilmFromFav,
 } from '../../redux/reducer/favReducer/favouritesSlice';
 import { removeFilm } from '../../redux/reducer/filmsReducer/filmsSlice';
 import { AppDispatch, RootState } from '../../redux/store';
@@ -58,15 +60,24 @@ export interface Film {
 
 export const FilmsList = (): JSX.Element => {
 	const films = useSelector((state: RootState) => state.films.initArr);
+	const fillWithRed = useSelector((state: RootState) => state.favourites.fill);
+
 	const dispatch = useDispatch<AppDispatch>();
 
 	const HandleClickRemove = (id: number) => {
 		dispatch(removeFilm(id));
 	};
 
-	const handleAddToFav = (film: Film) => {
-		dispatch(addFilmToFav(film));
-		dispatch(incrementCounter());
+	const handleAddToFav = (film: Film, id: number) => {
+		if (fillWithRed.style.fill === 'none') {
+			dispatch(addFilmToFav(film));
+			dispatch(launchCounter());
+			dispatch(toggleFillHeart({ style: { fill: 'red' } }));
+		} else {
+			dispatch(removeFilmFromFav(id));
+			dispatch(launchCounter());
+			dispatch(toggleFillHeart({ style: { fill: 'none' } }));
+		}
 	};
 
 	return (
@@ -80,7 +91,12 @@ export const FilmsList = (): JSX.Element => {
 								alt={`poster of ${film.names[1]?.name || film.names[0]?.name}`}
 								style={MainStyles.FilmPoster}
 							/>
-							<HeartPlus onClick={() => handleAddToFav(film)} />
+							<HeartPlus
+								onClick={() => {
+									handleAddToFav(film, film.id);
+								}}
+								{...fillWithRed}
+							/>
 							<div style={MainStyles.FilmInfo}>
 								<p style={MainStyles.FilmName}>
 									{film.names[1]?.name || film.names[0].name} | {film.type}
