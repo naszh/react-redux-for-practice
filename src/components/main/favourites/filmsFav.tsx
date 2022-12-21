@@ -1,5 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { removeFilmFromFav } from '../../../redux/reducer/favReducer/favouritesSlice';
+import {
+	incrementCounter,
+	removeFilmFromFav,
+} from '../../../redux/reducer/favReducer/favouritesSlice';
 import { AppDispatch, RootState } from '../../../redux/store';
 import { LinkStyled } from '../../common';
 import { Header } from '../../header/header';
@@ -20,6 +23,7 @@ export const MyFavouriteFilms = () => {
 
 	const HandleClickRemove = (id: number) => {
 		dispatch(removeFilmFromFav(id));
+		dispatch(incrementCounter());
 	};
 
 	return (

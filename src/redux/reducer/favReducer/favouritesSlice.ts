@@ -16,7 +16,7 @@ const favouritesSlice = createSlice({
 	initialState,
 	reducers: {
 		addFilmToFav: (state, action: PayloadAction<Film>) => {
-			const tempFilm = { ...action.payload };
+			const tempFilm = action.payload;
 			let isIn = false;
 			state.initArr.forEach(el => {
 				if (el.id === tempFilm.id) isIn = true;
