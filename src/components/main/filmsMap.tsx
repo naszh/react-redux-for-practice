@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
 	addFilmToFav,
@@ -62,6 +63,13 @@ export const FilmsList = (): JSX.Element => {
 	const films = useSelector((state: RootState) => state.films.initArr);
 	const fillWithRed = useSelector((state: RootState) => state.favourites.fill);
 
+	const [isRed, setIsRed] = useState(false);
+	const [state, setState] = useState(-1);
+
+	const handleClick = () => {
+		setIsRed(current => !current);
+	};
+
 	const dispatch = useDispatch<AppDispatch>();
 
 	const HandleClickRemove = (id: number) => {
@@ -69,21 +77,24 @@ export const FilmsList = (): JSX.Element => {
 	};
 
 	const handleAddToFav = (film: Film, id: number) => {
-		if (fillWithRed.style.fill === 'none') {
+		if (!isRed) {
 			dispatch(addFilmToFav(film));
 			dispatch(launchCounter());
-			dispatch(toggleFillHeart({ style: { fill: 'red' } }));
+
+			// dispatch(toggleFillHeart({ style: { fill: 'red' } }));
 		} else {
 			dispatch(removeFilmFromFav(id));
 			dispatch(launchCounter());
-			dispatch(toggleFillHeart({ style: { fill: 'none' } }));
+
+			// dispatch(toggleFillHeart({ style: { fill: 'none' } }));
 		}
+		setIsRed(current => !current);
 	};
 
 	return (
 		<>
 			{films.map(
-				(film: Film) =>
+				(film: Film, i) =>
 					film.poster?.url && (
 						<div key={film.id} style={MainStyles.FilmItem}>
 							<img
@@ -94,8 +105,11 @@ export const FilmsList = (): JSX.Element => {
 							<HeartPlus
 								onClick={() => {
 									handleAddToFav(film, film.id);
+									setState(i);
 								}}
-								{...fillWithRed}
+								style={{
+									fill: state === i && isRed ? 'red' : '',
+								}}
 							/>
 							<div style={MainStyles.FilmInfo}>
 								<p style={MainStyles.FilmName}>
