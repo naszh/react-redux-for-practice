@@ -21,7 +21,7 @@ import {
 } from './components';
 import { AuthProvider, RequireAuth } from './private';
 import { AppDispatch, RootState } from './redux/store';
-import { fetchFilms } from './redux/reducer/filmsReducer/filmsSlice';
+import { fetchFilms } from './redux/reducer/filmsSlice';
 
 import { Wrapper } from './App.styles';
 

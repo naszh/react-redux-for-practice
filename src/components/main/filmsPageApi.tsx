@@ -7,7 +7,7 @@ import { FilmsList } from './filmsMap';
 import { Heart, MainStyles } from './main.styles';
 
 export const FilmsPage = () => {
-	const count = useSelector((state: RootState) => state.favourites.counter);
+	const count = useSelector((state: RootState) => state.films.counter);
 	const { error } = useSelector((state: RootState) => state.films);
 
 	return (

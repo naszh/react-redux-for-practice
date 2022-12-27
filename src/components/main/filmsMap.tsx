@@ -1,17 +1,16 @@
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import {
-	addFilmToFav,
-	toggleFillHeart,
+	removeFilm,
+	toggleFilmInFav,
 	launchCounter,
-	removeFilmFromFav,
-} from '../../redux/reducer/favReducer/favouritesSlice';
-import { removeFilm } from '../../redux/reducer/filmsReducer/filmsSlice';
+} from '../../redux/reducer/filmsSlice';
 import { AppDispatch, RootState } from '../../redux/store';
 import { ButtonElement } from '../common';
 import { HeartPlus, MainStyles } from './main.styles';
 
 export interface Film {
+	isFav: boolean;
 	alternativeName: string | null;
 	description: string | null;
 	enName: string | null;
@@ -61,14 +60,6 @@ export interface Film {
 
 export const FilmsList = (): JSX.Element => {
 	const films = useSelector((state: RootState) => state.films.initArr);
-	const fillWithRed = useSelector((state: RootState) => state.favourites.fill);
-
-	const [isRed, setIsRed] = useState(false);
-	const [state, setState] = useState(-1);
-
-	const handleClick = () => {
-		setIsRed(current => !current);
-	};
 
 	const dispatch = useDispatch<AppDispatch>();
 
@@ -76,19 +67,9 @@ export const FilmsList = (): JSX.Element => {
 		dispatch(removeFilm(id));
 	};
 
-	const handleAddToFav = (film: Film, id: number) => {
-		if (!isRed) {
-			dispatch(addFilmToFav(film));
-			dispatch(launchCounter());
-
-			// dispatch(toggleFillHeart({ style: { fill: 'red' } }));
-		} else {
-			dispatch(removeFilmFromFav(id));
-			dispatch(launchCounter());
-
-			// dispatch(toggleFillHeart({ style: { fill: 'none' } }));
-		}
-		setIsRed(current => !current);
+	const handleAddToFav = (id: number) => {
+		dispatch(toggleFilmInFav(id));
+		dispatch(launchCounter());
 	};
 
 	return (
@@ -104,12 +85,9 @@ export const FilmsList = (): JSX.Element => {
 							/>
 							<HeartPlus
 								onClick={() => {
-									handleAddToFav(film, film.id);
-									setState(i);
+									handleAddToFav(film.id);
 								}}
-								style={{
-									fill: state === i && isRed ? 'red' : '',
-								}}
+								style={{ fill: film.isFav ? 'red' : '' }}
 							/>
 							<div style={MainStyles.FilmInfo}>
 								<p style={MainStyles.FilmName}>

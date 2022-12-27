@@ -1,9 +1,10 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { kinopoiskApi, token } from '../../../axios/api';
-import { Film } from '../../../components/main/filmsMap';
+import { kinopoiskApi, token } from '../../axios/api';
+import { Film } from '../../components/main/filmsMap';
 
 interface InitialStateType {
 	initArr: Array<Film>;
+	counter: number;
 	error: null | string;
 }
 
@@ -23,6 +24,7 @@ export const fetchFilms: any = createAsyncThunk(
 
 const initialState: InitialStateType = {
 	initArr: [],
+	counter: 0,
 	error: null,
 };
 
@@ -37,10 +39,27 @@ const filmsSlice = createSlice({
 			const filmId: number = action.payload;
 			state.initArr = state.initArr.filter((film: Film) => film.id !== filmId);
 		},
+		toggleFilmInFav: (state, action: PayloadAction<number>) => {
+			state.initArr = state.initArr.map((film: Film) =>
+				film.id === action.payload
+					? {
+							...film,
+							isFav: !film.isFav,
+					  }
+					: film
+			);
+		},
+		launchCounter: state => {
+			state.counter = state.initArr.filter(
+				(film: Film) => film.isFav === true
+			).length;
+		},
 	},
+
 	extraReducers: builder => {
 		builder.addCase(fetchFilms.fulfilled, (state, action) => {
 			state.initArr = action.payload;
+			state.initArr = state.initArr.map(film => ({ ...film, isFav: false }));
 		});
 		builder.addCase(fetchFilms.rejected, (state, action) => {
 			state.error = action.error.message;
@@ -48,5 +67,6 @@ const filmsSlice = createSlice({
 	},
 });
 
-export const { addFilms, removeFilm } = filmsSlice.actions;
+export const { addFilms, removeFilm, toggleFilmInFav, launchCounter } =
+	filmsSlice.actions;
 export const filmsReducer = filmsSlice.reducer;

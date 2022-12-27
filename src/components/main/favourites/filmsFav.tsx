@@ -1,9 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import {
-	toggleFillHeart,
-	launchCounter,
-	removeFilmFromFav,
-} from '../../../redux/reducer/favReducer/favouritesSlice';
+import { launchCounter } from '../../../redux/reducer/filmsSlice';
+import { toggleFilmInFav } from '../../../redux/reducer/filmsSlice';
+
 import { AppDispatch, RootState } from '../../../redux/store';
 import { LinkStyled } from '../../common';
 import { Header } from '../../header/header';
@@ -18,14 +16,13 @@ import {
 export const MyFavouriteFilms = () => {
 	const dispatch = useDispatch<AppDispatch>();
 
-	const favourites: Array<Film> = useSelector(
-		(state: RootState) => state.favourites.initArr
+	const favourites: Array<Film> = useSelector((state: RootState) =>
+		state.films.initArr.filter((film: Film) => film.isFav === true)
 	);
 
 	const HandleClickRemove = (id: number) => {
-		dispatch(removeFilmFromFav(id));
+		dispatch(toggleFilmInFav(id));
 		dispatch(launchCounter());
-		dispatch(toggleFillHeart({ style: { fill: 'none' } }));
 	};
 
 	return (
@@ -40,18 +37,19 @@ export const MyFavouriteFilms = () => {
 				<p>You haven't added any movies to your favourites</p>
 			) : (
 				<div>
-					{favourites.map((el: Film) => (
-						<FavFilmBlock key={el.id}>
+					{favourites.map((film: Film, i) => (
+						<FavFilmBlock key={i}>
 							<div>
-								{el.alternativeName} | {el.movieLength} minutes | {el.year}{' '}
+								{film.alternativeName} | {film.movieLength} minutes |{' '}
+								{film.year}
 								<DislikeHeart
 									onClick={() => {
-										HandleClickRemove(el.id);
+										HandleClickRemove(film.id);
 									}}
 								/>
 							</div>
 							<div>
-								{el.description || el.shortDescription || 'no description'}
+								{film.description || film.shortDescription || 'no description'}
 							</div>
 						</FavFilmBlock>
 					))}
