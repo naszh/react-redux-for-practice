@@ -65,6 +65,7 @@ export const FilmsList = (): JSX.Element => {
 
 	const HandleClickRemove = (id: number) => {
 		dispatch(removeFilm(id));
+		dispatch(launchCounter());
 	};
 
 	const handleAddToFav = (id: number) => {
@@ -95,7 +96,7 @@ export const FilmsList = (): JSX.Element => {
 								</p>
 								<p>Rating imdb: {film.rating.imdb}</p>
 								<ButtonElement
-									text={'viewed'}
+									text={'remove'}
 									size={'small'}
 									onClick={() => {
 										HandleClickRemove(film.id);
