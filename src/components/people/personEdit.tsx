@@ -6,21 +6,21 @@ import { Header } from '../header/header';
 import { PersonEditTitle } from './people.styles';
 
 export const PersonEditPage = () => {
-	const { id } = useParams();
-	const navigate = useNavigate();
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-	const goToMainPage = () => {
-		navigate('/main', { replace: true, state: { from: id } });
-	};
+  const goToMainPage = () => {
+    navigate('/main', { replace: true, state: { from: id } });
+  };
 
-	return (
-		<>
-			<Header />
-			<PersonEditTitle>
-				Edit person with ID {id}
-				<br />
-				<ButtonElement onClick={goToMainPage} text={'go back'} size={'small'} />
-			</PersonEditTitle>
-		</>
-	);
+  return (
+    <>
+      <Header />
+      <PersonEditTitle>
+        Edit person with ID {id}
+        <br />
+        <ButtonElement onClick={goToMainPage} text={'go back'} size={'small'} />
+      </PersonEditTitle>
+    </>
+  );
 };

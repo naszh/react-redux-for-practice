@@ -2,35 +2,35 @@ import React, { MouseEventHandler, ReactElement, useState } from 'react';
 
 type Theme = 'light' | 'dark';
 type ThemeContextType = {
-	theme: Theme;
-	toggleTheme?: MouseEventHandler<HTMLButtonElement>;
+  theme: Theme;
+  toggleTheme?: MouseEventHandler<HTMLButtonElement>;
 };
 
 export const ThemeContext = React.createContext<ThemeContextType>({
-	theme: 'light',
+  theme: 'light',
 });
 
 type ThemeProviderProps = {
-	children: ReactElement;
+  children: ReactElement;
 };
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-	const [theme, setTheme] = useState<Theme>('light');
-	const toggleTheme = () => {
-		setTheme(theme === 'light' ? 'dark' : 'light');
-	};
+  const [theme, setTheme] = useState<Theme>('light');
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
 
-	const color = theme === 'light' ? 'darkslategray' : 'mintcream';
-	const backgroundColor = theme === 'light' ? 'mintcream' : 'darkslategray';
-	const fontFamily = theme === 'light' ? 'cursive' : 'monospace';
+  const color = theme === 'light' ? 'darkslategray' : 'mintcream';
+  const backgroundColor = theme === 'light' ? 'mintcream' : 'darkslategray';
+  const fontFamily = theme === 'light' ? 'cursive' : 'monospace';
 
-	document.body.style.color = color;
-	document.body.style.backgroundColor = backgroundColor;
-	document.body.style.fontFamily = fontFamily;
+  document.body.style.color = color;
+  document.body.style.backgroundColor = backgroundColor;
+  document.body.style.fontFamily = fontFamily;
 
-	return (
-		<ThemeContext.Provider value={{ theme, toggleTheme }}>
-			{children}
-		</ThemeContext.Provider>
-	);
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
 };
