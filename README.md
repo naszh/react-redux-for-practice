@@ -1,46 +1,26 @@
-# Getting Started with Create React App
+This project was used to learn react, redux and typescript. The styled-components, material UI, axios, react-spinners, react-router-dom, react-icons libraries were used.
+You can see the result at https://react-redux-for-practice.vercel.app/
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Implemented features:
+1) Theme switching is implemented.
+2) Implemented navigation: 
+<br>SignUp -> SinIn; SinIn -> SignUp; SinIn -> SignUp; SinIn -> Main; Home <-> Main <-> About; Main <-> Favourites.
+<br>The wrong path will lead to a special fake page.
 
-## Available Scripts
+3) The sign up form with validation is implemented on the start page. To sign up:
+- your name must contain more than 3 characters
+- your email must follow the pattern #@#.##
+- your password must contain at least 1 number and must have a length of 3 or more characters
+<br><br>By clicking the button sign up your entered data is displayed under the form.
 
-In the project directory, you can run:
+4) Next step is to click on the text "Already a member? Sign In" or put in url "/signin".
+Here is a fake sign in form. After filling it out you will have access to a protected router.
 
-### `npm start`
+5) The main page is located at https://react-redux-for-practice.vercel.app/main
+<br>The axios is used to get movies and display them on page. Redux is used too.
+<br>By clicking on the button "REMOVE" the movie is removed from the list. By toggling on the heart the movie is added/removed to/from Favourites. There is also a embedded counter of your favorite movies. By clicking on Favourites you can see your favourite movies and remove them.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+6) The fake home page is used just for navigation.
+7) The fake about page is used just for navigation too but to reach it you need to log in.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+![image](https://user-images.githubusercontent.com/106557182/209785760-213204fe-016c-4f0c-8aaa-15a55e5712bb.png)
